@@ -18,15 +18,20 @@ There is also a Plateau class which is designed to implement the rectangular gri
 **Instruction To Run**
 
 Step 1 - Fork the repository to your github account.
+
 Step 2 - Clone the repository.
+
 Step 3 - Open the repository in your IDE and run the test cases using mvn tests.
+
 Step 4 - The test run successfully and the application run successfuly.
 
 
 **Future Thoughts**
 
 Different type of Vehicles
+
 Different form of plateau
+
 Overcome the obstacles.
 
 
