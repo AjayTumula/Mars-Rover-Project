@@ -21,7 +21,7 @@ public class RoverTest {
     public void testMaxYCoordinate() {
         Plateau plateau = new Plateau("5 5");
 
-        assertEquals(5, Plateau.getMaxXCoordinate());
+        assertEquals(5, Plateau.getMaxYCoordinate());
 
     }
 
