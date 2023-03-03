@@ -1,9 +1,8 @@
 package org.example.model.vehicle;
 
-import org.example.model.Controller.FirstRoverMovement;
-import org.example.model.Controller.MovementForOtherRovers;
+import org.example.model.Controller.RoverMovement;
+import org.example.model.Controller.RoverMovementControlIMpl;
 import org.example.model.enums.DirectionEnum;
-import org.example.model.enums.InstructionEnum;
 import org.example.model.plateau.Plateau;
 
 import java.util.ArrayList;
@@ -18,9 +17,7 @@ public class Rover implements Vehicle {
     private String instruction;
     private DirectionEnum direction;
     public static List<String> roverPositions = new ArrayList();
-
-    FirstRoverMovement firstRoverMovement = new FirstRoverMovement();
-    MovementForOtherRovers movementForOtherRovers = new MovementForOtherRovers();
+    RoverMovement roverMovement = new RoverMovement();
 
     @Override
     public String getRoverPosition(int index) {
@@ -48,14 +45,14 @@ public class Rover implements Vehicle {
                 for (int i = 0; i <= instruction.length() - 1; i++) {
                     splitGivenPositionToCoordinatesAndDirection(position);
                     if (instruction.charAt(i) == 'L') {
-                        position = firstRoverMovement.spinLeft(x_coordinate, y_coordinate, direction);
+                        position = roverMovement.spinLeft(x_coordinate, y_coordinate, direction);
                     } else if (instruction.charAt(i) == 'R') {
-                        position = firstRoverMovement.spinRight(x_coordinate, y_coordinate, direction);
+                        position = roverMovement.spinRight(x_coordinate, y_coordinate, direction);
                     } else if (instruction.charAt(i) == 'M') {
                         if (roverPositions.size() == 0) {
-                            position = firstRoverMovement.movePosition(x_coordinate, y_coordinate, direction);
+                            position = roverMovement.movePosition(x_coordinate, y_coordinate, direction);
                         } else if (roverPositions.size() > 0) {
-                            position = movementForOtherRovers.movePosition(x_coordinate, y_coordinate, direction);
+                            position = roverMovement.movePosition(x_coordinate, y_coordinate, direction);
                         }
                     }
                 }
@@ -68,7 +65,7 @@ public class Rover implements Vehicle {
     @Override
     public boolean checkValidCoordinates() throws Exception {
         boolean isValid = false;
-        if (x_coordinate <= Plateau.MAX_X_COORDINATE && y_coordinate <= Plateau.MAX_Y_COORDINATE
+        if (x_coordinate <= Plateau.getMaxXCoordinate() && y_coordinate <= Plateau.getMaxYCoordinate()
                 && x_coordinate >= Plateau.MIN_X_COORDINATE && y_coordinate >= Plateau.MIN_Y_COORDINATE) {
             isValid = true;
         } else {

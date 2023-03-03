@@ -1,10 +1,12 @@
 package org.example.app;
 
+import org.example.model.plateau.Plateau;
 import org.example.model.vehicle.Rover;
 import org.example.model.vehicle.Vehicle;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        Plateau plateau = new Plateau("5 5");
         Vehicle vehicle = new Rover();
 
         System.out.println(vehicle.getPositionBasedOnInstruction("1 2 N", "LMLMLML")); // 1 1 N

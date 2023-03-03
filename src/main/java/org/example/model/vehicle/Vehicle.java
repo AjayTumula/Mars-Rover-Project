@@ -1,7 +1,5 @@
 package org.example.model.vehicle;
 
-import org.example.model.enums.InstructionEnum;
-
 public interface Vehicle {
 
     void splitGivenPositionToCoordinatesAndDirection(String position);
