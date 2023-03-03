@@ -18,16 +18,6 @@ public class Rover implements Vehicle {
     private DirectionEnum direction;
     public static List<String> roverPositions = new ArrayList();
     RoverMovement roverMovement = new RoverMovement();
-
-    @Override
-    public String getRoverPosition(int index) {
-        String position = null;
-        for(int i=0;i<roverPositions.size();i++){
-            position = roverPositions.get(index);
-        }
-        return position;
-
-    }
     @Override
     public void splitGivenPositionToCoordinatesAndDirection(String position) {
         x_coordinate = Integer.parseInt(String.valueOf(position.charAt(0)));

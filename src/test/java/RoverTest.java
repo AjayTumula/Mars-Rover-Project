@@ -61,30 +61,10 @@ public class RoverTest {
         Plateau.getMaxYCoordinate();
         vehicle.splitGivenPositionToCoordinatesAndDirection("5 6 S");
 
+
         Exception exception = assertThrows(Exception.class, () -> vehicle.checkValidCoordinates());
 
         assertEquals("Given input is outside the plateau range", exception.getMessage());
-    }
-
-    @Test
-    public void testSpinLeft() throws Exception{
-        RoverMovement roverMovement = new RoverMovement();
-        String result = roverMovement.spinLeft(0, 0, DirectionEnum.N);
-        assertEquals("0 0 W", result);
-    }
-
-    @Test
-    public void testSpinRight() throws Exception{
-        RoverMovement roverMovement = new RoverMovement();
-        String result = roverMovement.spinRight(0, 1, DirectionEnum.S);
-        assertEquals("0 1 W", result);
-    }
-
-    @Test
-    public void testMovePosition() throws Exception{
-        RoverMovement roverMovement = new RoverMovement();
-        String result = roverMovement.movePosition(1, 0, DirectionEnum.E);
-        assertEquals("2 0 E", result);
     }
 
     @Test
@@ -119,6 +99,27 @@ public class RoverTest {
         Exception exception = assertThrows(Exception.class, () -> vehicle.getPositionBasedOnInstruction("1 2 W","MRMR"));
 
         assertEquals("Given position is invalid as there is already a rover at this position. Please start at another position..!!", exception.getMessage());
+    }
+
+    @Test
+    public void testSpinLeft() throws Exception{
+        RoverMovement roverMovement = new RoverMovement();
+        String result = roverMovement.spinLeft(0, 0, DirectionEnum.N);
+        assertEquals("0 0 W", result);
+    }
+
+    @Test
+    public void testSpinRight() throws Exception{
+        RoverMovement roverMovement = new RoverMovement();
+        String result = roverMovement.spinRight(0, 1, DirectionEnum.S);
+        assertEquals("0 1 W", result);
+    }
+
+    @Test
+    public void testMovePosition() throws Exception{
+        RoverMovement roverMovement = new RoverMovement();
+        String result = roverMovement.movePosition(1, 0, DirectionEnum.E);
+        assertEquals("2 0 E", result);
     }
 
 }
